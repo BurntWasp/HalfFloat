@@ -41,7 +41,7 @@ int main(int argc, const char * argv[])
    // HALF FLOAT -> FLOAT TABLES
    
    // Write mantissa table
-   printf("static const uint32_t MantissaTable[2048]=\n{\n");
+   printf("const uint32_t HalfFloat::MantissaTable[2048]=\n{\n");
    
    printf("   0x00000000, ");
    
@@ -62,7 +62,7 @@ int main(int argc, const char * argv[])
    printf("\n};\n\n");
    
    // Write exponent table
-   printf("static const uint32_t ExponentTable[64]=\n{\n   ");
+   printf("const uint32_t HalfFloat::ExponentTable[64]=\n{\n   ");
    
    for (uint32_t i = 0; i < 64; ++i)
    {
@@ -102,7 +102,7 @@ int main(int argc, const char * argv[])
    printf("\n};\n\n");
    
    // Write offset table
-   printf("static const uint32_t OffsetTable[64]=\n{\n   ");
+   printf("const uint32_t HalfFloat::OffsetTable[64]=\n{\n   ");
    for (uint32_t i = 0; i < 64; ++i)
    {
       switch (i)
@@ -177,7 +177,7 @@ int main(int argc, const char * argv[])
    }
    
    // Write base table
-   printf("static const uint16_t BaseTable[512]=\n{\n   ");
+   printf("const uint16_t HalfFloat::BaseTable[512]=\n{\n   ");
    for (uint32_t i = 0; i < 512; ++i)
    {
       printf("0x%04x", baseTable[i]);
@@ -191,7 +191,7 @@ int main(int argc, const char * argv[])
    printf("\n};\n\n");
    
    // Write shift table
-   printf("static const uint16_t ShiftTable[512]=\n{\n   ");
+   printf("const uint16_t HalfFloat::ShiftTable[512]=\n{\n   ");
    for (uint32_t i = 0; i < 512; ++i)
    {
       printf("0x%04x", shiftTable[i]);
