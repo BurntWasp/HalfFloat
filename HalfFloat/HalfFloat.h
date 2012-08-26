@@ -69,7 +69,7 @@ public:
 //////////////////////////////////////////////////////////////////////////////
 #pragma mark - Type Traits
 
-template <> struct std::__is_floating_point<HalfFloat> : public std::true_type {};
+template<> struct std::__is_floating_point<HalfFloat> : public std::true_type {};
 
 //////////////////////////////////////////////////////////////////////////////
 // Validity Checks
@@ -84,7 +84,7 @@ static_assert(sizeof(HalfFloat) == sizeof(uint16_t), "sizeof(HalfFloat) no longe
 static_assert(std::is_trivial<HalfFloat>::value, "HalfFloat is no longer trivial");
 static_assert(std::is_standard_layout<HalfFloat>::value, "HalfFloat is no longer standard layout");
 
-static_assert(std::is_floating_point<HalfFloat>::value, "HalfFloat is not floating point");
+static_assert(std::is_floating_point<HalfFloat>::value, "HalfFloat is not floating point; check type traits");
 
 //////////////////////////////////////////////////////////////////////////////
 #endif // BW_HALFFLOAT_H
