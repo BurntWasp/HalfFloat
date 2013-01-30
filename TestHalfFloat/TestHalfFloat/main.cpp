@@ -45,7 +45,12 @@ int main(int argc, const char * argv[])
    std::uniform_real_distribution<> smallDist(0, 1);
    std::uniform_real_distribution<> largeDist(20, 100);
    
-   printf("Small numbers:\n");
+   HalfFloat udlhf = 0.282013_hf;
+   float udlf = 0.282013_hf;
+   printf("user defined literal (HalfFloat) = %f\n", (float)udlhf);
+   printf("user defined literal (float) = %f\n", udlf);
+   
+   printf("\nSmall numbers:\n");
    test(10, smallDist, gen);
    
    printf("\nLarge-ish numbers:\n");
