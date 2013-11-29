@@ -50,17 +50,17 @@ public:
    
    inline HalfFloat &operator =(const float value) noexcept
    {
-      const uint32_t f = *(uint32_t *)(&value);
+      const uint32_t f = reinterpret_cast<const uint32_t &>(value);
       const uint32_t offset = (f >> 23) & 0x1ff;
-      mRep = BaseTable[offset] + ((f & 0x007fffff) >> ShiftTable[offset]);
+      mRep = (f & 0x80000000) >> 16 | BaseTable[offset] + ((f & 0x007fffff) >> ShiftTable[offset]);
       return *this;
    }
    
    inline operator float() const noexcept
    {
       const uint32_t offset = mRep >> 10;
-      const uint32_t f = MantissaTable[OffsetTable[offset] + (mRep & 0x3ff)] + ExponentTable[offset];
-      return *(float *)(&f);
+      const uint32_t f = (mRep & 0x8000) << 16 | MantissaTable[OffsetTable[offset] + (mRep & 0x3ff)] + ExponentTable[offset];
+      return reinterpret_cast<const float &>(f);
    }
 };
 

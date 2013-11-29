@@ -44,17 +44,25 @@ int main(int argc, const char * argv[])
    std::mt19937 gen(dev());
    std::uniform_real_distribution<> smallDist(0, 1);
    std::uniform_real_distribution<> largeDist(20, 100);
+   std::uniform_real_distribution<> negSmallDist(-1, 0);
+   std::uniform_real_distribution<> negLargeDist(-100, -20);
    
-   HalfFloat udlhf = 0.282013_hf;
-   float udlf = 0.282013_hf;
-   printf("user defined literal (HalfFloat) = %f\n", (float)udlhf);
-   printf("user defined literal (float) = %f\n", udlf);
+   HalfFloat udlhfA = 0.282013_hf, udlhfB = -0.282013_hf;
+   float udlfA = 0.282013_hf, udlfB = -0.282013_hf;
+   printf("user defined literal (HalfFloat) A = %f B = %f\n", (float)udlhfA, (float)udlhfB);
+   printf("user defined literal (float) A = %f B = %f\n", udlfA, udlfB);
    
    printf("\nSmall numbers:\n");
    test(10, smallDist, gen);
    
    printf("\nLarge-ish numbers:\n");
    test(10, largeDist, gen);
+   
+   printf("\nNegative Small numbers:\n");
+   test(10, negSmallDist, gen);
+   
+   printf("\nNegative Large-ish numbers:\n");
+   test(10, negLargeDist, gen);
    
    return 0;
 }
